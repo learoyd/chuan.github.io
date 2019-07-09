@@ -29,12 +29,12 @@ jobs:
       - run: yarn install
       - run: pwd
       - run: node ./build/cli.js
-      - run: git config --global user.email "linus.wang.i77@qq.com"
-      - run: git config --global user.name "Linus Wang"
+      - run: git config --global user.email "936051639@qq.com"
+      - run: git config --global user.name "Bigggggggggger"
       - run: git checkout master
       - run: git add .
       - run: git commit -m "Update From Circle CI"
-      - run: git push https://$GITHUB_LOGIN:$GITHUB_PASSWORD@github.com/okfe/okfe.github.io.git
+      - run: git push https://$GITHUB_LOGIN:$GITHUB_PASSWORD@github.com/okfe/chuan.github.io.git
       - run: echo 'done'
       - save_cache:
           paths:
