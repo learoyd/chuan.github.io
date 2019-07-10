@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OK前端俱乐部</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OKFE">
+  <meta name="keywords" content="OKFE">
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+</head>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    margin: 0;
+  }
+
+  body {
+    background-color: #f4f4f4;
+  }
+
+  .header {
+    height: 40px;
+    width: 100%;
+    background-color: #0049B0;
+    box-sizing: content-box;
+    padding-left: 40px;
+  }
+  .header .title {
+    line-height: 40px;
+    color: white;
+    font-weight: bolder;
+  }
+  .detail-box {
+    min-height: 1000px;
+    background-color: white;
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .detail-box .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
+<body>
+{% include "../fragments/header.njk" %}
+<div class="detail-box">
+
+</div>
+</body>
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: 'https://api.github.com/repos/okfe/weekly/issues/'+GetQueryString("number"),
+      async: false,
+      success: function (data) {
+        console.log(data)
+        let template = `
+                      <div class='title'>
+                        ${data.title}
+                      </div>
+                      <div class="content">
+                        ${data.body}
+                      </div>
+                   `;
+        $('.detail-box').html(template);
+      }
+    });
+
+
+  });
+
+  function GetQueryString(name)
+  {
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+  }
+
+</script>
+</html>

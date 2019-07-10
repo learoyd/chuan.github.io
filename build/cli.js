@@ -44,6 +44,7 @@ const issuesFileName = path.resolve(distPath, 'issueList.json');
       title: item.title,
       created_at: item.created_at,
       updated_at: item.updated_at,
+      number: item.number,
       labels
     });
 

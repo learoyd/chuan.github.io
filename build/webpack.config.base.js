@@ -7,12 +7,13 @@ const src = path.resolve(__dirname, '../src');
 
 const base = {
   entry: {
-    index: path.resolve(src, 'index.js')
+    index: path.resolve(src, 'index.js'),
+    detail: path.resolve(src, './detail/index.js')
   },
   output: {
-    filename: 'index.js',
+    filename: '[name]/index.js',
     chunkFilename: 'assets/[name].js',
-    path: path.resolve(__dirname, '../')
+    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [
@@ -71,6 +72,10 @@ const base = {
         {
           from: path.resolve(src, 'index.njk'),
           to: 'index.html'
+        },
+        {
+          from: path.resolve(src, './detail/index.njk'),
+          to: 'detail.html'
         }
       ]
     }),
